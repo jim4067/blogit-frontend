@@ -17,12 +17,29 @@ const App = () => {
 			)
 	}, []);
 
+	const handleLogin = async (event) => {
+		event.preventDefault();
+		console.log("logging in with", username, password);
+
+		try {
+			
+		} catch (exception) {
+			
+		}
+	}
+
 	return (
 		<div>
+			
+			<form>
+				
+			</form>
+
 			<h2>blogs</h2>
 			{blogs.map(blog =>
 				<Blog key={blog.id} blog={blog} />
 			)}
+
 		</div>
 	)
 }
