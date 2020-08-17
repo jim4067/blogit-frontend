@@ -19,8 +19,8 @@ const App = () => {
 	const [newAuthor, setNewAuthor] = useState("");
 	const [newUrl, setNewUrl] = useState("");
 
-	//the error state nofitification
-	const [errorMessage, setErrorMessage] = useState(null);
+	//the state for nofitification
+	const [message, setMessage] = useState(null);
 
 	useEffect(() => {
 		blogService
@@ -51,14 +51,20 @@ const App = () => {
 			}
 
 			const response = await blogService.create(blogObject);
-			console.log("the response is ...." , response);
+			console.log("the response is ....", response);
+
+			//the notification for when a new blog is added
+			setMessage(`a new blog -> ${blogObject.title} by ${blogObject.author} added`);
+			setTimeout(() => {
+				setMessage(null);
+			}, 5000);
 
 			setBlogs(blogs.concat(response.data));
 
 			setNewTitle("");
 			setNewAuthor("");
 			setNewUrl("");
-			
+
 		} catch (exception) {
 			console.log("the eception for creating a new blog", exception);
 		}
@@ -83,11 +89,11 @@ const App = () => {
 			setUser(user);
 
 		} catch (exception) {
-			setErrorMessage("wrong username or password");
+			setMessage("wrong username or password");
 			setTimeout(() => {
-				setErrorMessage(null);
+				setMessage(null);
 			}, 5000);
-			
+
 			console.log("the exception ", exception);
 		}
 	}
@@ -106,7 +112,7 @@ const App = () => {
 	return (
 		<div>
 
-			<Notification message={errorMessage} />
+			<Notification message={message} />
 
 			{user === ""
 				?

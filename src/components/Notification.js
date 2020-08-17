@@ -30,8 +30,12 @@ const Notification = ({ message }) => {
                 {message}
             </div>
         )
-    } else if (message === ) {
-
+    } else if (message.includes("a new blog")) {
+        return (
+            <div className='error' style={blog_addition_styles}>
+                {message}
+            </div>
+        )
     }
 }
 
