@@ -89,6 +89,7 @@ const App = () => {
 					password={password} setPassword={setPassword} />
 				:
 				<DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout}
+					createBlog={createBlog}
 					handleTitleChange={({ target }) => setNewTitle(target.value)}
 					handleAuthorChage={({ target }) => setNewAuthor(target.value)}
 					handleUrlChange={({ target }) => setNewUrl(target.value)} />
