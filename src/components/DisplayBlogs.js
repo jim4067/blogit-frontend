@@ -2,7 +2,7 @@ import React from 'react';
 import Blog from './Blog'
 
 //component to display blogs if user logges in
-const DisplayBlogs = ({ blogs, user }) => {
+const DisplayBlogs = ({ blogs, user, handleLogout }) => {
 
     return (
         <div>
@@ -10,7 +10,7 @@ const DisplayBlogs = ({ blogs, user }) => {
 
             <p>
                 {`logged in as ${user.name}`}
-                <button>logout</button>
+                <button onClick={handleLogout}>logout</button>
             </p>
 
             {blogs.map((blog) =>
