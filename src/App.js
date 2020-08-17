@@ -81,7 +81,13 @@ const App = () => {
 			setUsername("");
 			setPassword("");
 			setUser(user);
+
 		} catch (exception) {
+			setErrorMessage("wrong username or password");
+			setTimeout(() => {
+				setErrorMessage(null);
+			}, 5000);
+			
 			console.log("the exception ", exception);
 		}
 	}
@@ -99,6 +105,8 @@ const App = () => {
 
 	return (
 		<div>
+
+			<Notification message={errorMessage} />
 
 			{user === ""
 				?
