@@ -16,21 +16,6 @@ const App = () => {
 	const [newAuthor, setNewAuthor] = useState("");
 	const [newUrl, setNewUrl] = useState("");
 
-	const createBlog = async (event) => {
-		event.preventDefault();
-
-		try {
-			const blogObject = {
-				title: newTitle,
-				author: newAuthor,
-				url: newUrl
-			}
-
-		} catch (exception) {
-			console.log("the eception for creating a new blog", exception);
-		}
-	}
-
 	useEffect(() => {
 		blogService
 			.getAll()
@@ -48,6 +33,23 @@ const App = () => {
 		}
 	}, []);
 
+	//the event handler for adding a new blog
+	const createBlog = async (event) => {
+		event.preventDefault();
+
+		try {
+			const blogObject = {
+				title: newTitle,
+				author: newAuthor,
+				url: newUrl
+			}
+
+		} catch (exception) {
+			console.log("the eception for creating a new blog", exception);
+		}
+	}
+
+	//the event hanlder for logging in
 	const handleLogin = async (event) => {
 		event.preventDefault();
 		console.log("logging in with", username, password);
