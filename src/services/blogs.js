@@ -31,4 +31,4 @@ const update = async (blogObject) => {
   return response;
 }
 
-export default { getAll, setToken}
+export default { setToken, getAll, create, update}
