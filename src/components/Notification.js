@@ -10,12 +10,12 @@ const wrong_login_styles={
     "text-align" : "center"
 }
 
-const Notification = ({message}) => {
+const Notification = ({ message }) => {
 
-    if(message === null) {
+    if (message === null) {
         return null
-    } else {
-        return(
+    } else if (message === "wrong username or password") {
+        return (
             <div className='error' style={wrong_login_styles}>
                 {message}
             </div>
