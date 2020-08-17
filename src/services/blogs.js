@@ -12,11 +12,12 @@ const getAll = () => {
   return request.then(response => response.data)
 }
 
-const create = (blogObject) => {
+const create = async (blogObject) => {
   const config = {
     headers: {Authorization : token}
   }
-  const response = axios.post(baseUrl, blogObject, config);
+
+  const response = await axios.post(baseUrl, blogObject, config);
   return response;
 } 
 
