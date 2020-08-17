@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import CreateBlog from './components/CreateBlog';
 import DisplayBlogs from './components/DisplayBlogs';
 import LoginForm from './components/LoginForm';
 import blogService from './services/blogs';
 import loginService from './services/login';
 import './App.css';
-import Blog from './components/Blog';
 
 const App = () => {
 	const [blogs, setBlogs] = useState([]);
-	const [newBlog, setNewBlog] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [user, setUser] = useState("");
@@ -65,6 +62,7 @@ const App = () => {
 
 	return (
 		<div>
+
 			{user === ""
 				?
 				<LoginForm handleLogin={handleLogin} username={username} setUsername={setUsername}
