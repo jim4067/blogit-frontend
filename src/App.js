@@ -29,6 +29,10 @@ const App = () => {
 				{ username, password }
 			);
 
+			window.localStorage.setItem(
+				'loggedBlogAppuser', JSON.stringify(user)
+			);
+
 			setUsername("");
 			setPassword("");
 			setUser(user);
@@ -37,6 +41,7 @@ const App = () => {
 		}
 	}
 
+	//event hanlder to be fired when user logs out
 	const handleLogout = async () => {
 		try {
 			
