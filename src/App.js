@@ -37,6 +37,14 @@ const App = () => {
 		}
 	}
 
+	const handleLogout = async () => {
+		try {
+			
+		} catch (exception) {
+			console.log("the logout exception is...", exception);
+		}
+	}
+
 	return (
 		<div>
 			{user === ""
@@ -44,7 +52,7 @@ const App = () => {
 				<LoginForm handleLogin={handleLogin} username={username} setUsername={setUsername}
 					password={password} setPassword={setPassword} />
 				:
-				<DisplayBlogs blogs={blogs} user={user}/>
+				<DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout}/>
 			}
 
 		</div>
