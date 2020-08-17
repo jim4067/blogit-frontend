@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 //form component to create new blogs
-const CreateBlog = () => {
-    const [newTitle, setNewTitle] = useState("");
-    const [newAuthor, setNewAuthor] = useState("");
-    const [newUrl, setNewUrl] = useState("");
-
-    //const [newBlog, setNewBlog] = useState("");
-
+const CreateBlog = ({createBlog, newTitle, newAuthor, newUrl, handleTitleChange, handleAuthorChage , handleUrlChange}) => {
+ 
     return (
         <div>
             <h2>CreateNew</h2>
 
-            <form onSubmit={CreateBlog} >
+            <form onSubmit={createBlog} >
                 <div>
-                    title <input type='text' name='title'  value={newTitle} onChange={ ({target}) => setNewTitle(target.value) } />
+                    title <input type='text' name='title'  value={newTitle} onChange={ handleTitleChange } />
                 </div>
                 <div>
-                    author <input type='text' name='author'  value={newAuthor} onChange={ ({target}) => setNewAuthor(target.value) } />
+                    author <input type='text' name='author'  value={newAuthor} onChange={ handleAuthorChage } />
                 </div>
                 <div>
-                    url <input type='text' name='url'  value={newUrl} onChange={ ({target}) => setNewUrl(target.value) } />
+                    url <input type='text' name='url'  value={newUrl} onChange={ handleUrlChange } />
                </div>
                 <button type='submit'>create</button>
             </form>
