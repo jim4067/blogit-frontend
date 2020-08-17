@@ -2,17 +2,18 @@ import React from 'react';
 import Blog from './Blog'
 
 //component to display blogs if user logges in
-	const DisplayBlogs = ({blogs}) => {
+const DisplayBlogs = ({ blogs, user }) => {
 
-		return(
-			<div>
-				<h2>Blogs</h2>
-				{blogs.map((blog) =>
-				<Blog key={blog.id} blog={blog} />
-			)}
-			</div>
-		);
-	}
+    return (
+        <div>
+            <h2>Blogs</h2>
+            <p>{`logged in as ${user.name}`}</p>
+            {blogs.map((blog) =>
+                <Blog key={blog.id} blog={blog} />
+            )}
+        </div>
+    );
+}
 
 
-    export default DisplayBlogs;
+export default DisplayBlogs;
