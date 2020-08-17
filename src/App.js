@@ -44,7 +44,7 @@ const App = () => {
 				<LoginForm handleLogin={handleLogin} username={username} setUsername={setUsername}
 					password={password} setPassword={setPassword} />
 				:
-				<DisplayBlogs blogs={blogs} />
+				<DisplayBlogs blogs={blogs} user={user}/>
 			}
 
 		</div>
