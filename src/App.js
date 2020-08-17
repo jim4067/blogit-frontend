@@ -47,6 +47,10 @@ const App = () => {
 			const response = await blogService.create(blogObject);
 			console.log("the response is ...." , response);
 
+			setNewTitle("");
+			setNewAuthor("");
+			setNewUrl("");
+
 		} catch (exception) {
 			console.log("the eception for creating a new blog", exception);
 		}
