@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import DisplayBlogs from './components/DisplayBlogs';
 import LoginForm from './components/LoginForm';
+import Notification from './components/Notification';
 import blogService from './services/blogs';
 import loginService from './services/login';
 import './App.css';
 
 const App = () => {
 	const [blogs, setBlogs] = useState([]);
+
+	//the states for the login form
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [user, setUser] = useState("");
@@ -15,6 +18,9 @@ const App = () => {
 	const [newTitle, setNewTitle] = useState("");
 	const [newAuthor, setNewAuthor] = useState("");
 	const [newUrl, setNewUrl] = useState("");
+
+	//the error state nofitification
+	const [errorMessage, setErrorMessage] = useState(null);
 
 	useEffect(() => {
 		blogService
