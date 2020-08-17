@@ -1,5 +1,6 @@
 import React from 'react';
-import Blog from './Blog'
+import Blog from './Blog';
+import CreateBlog from './CreateBlog';
 
 //component to display blogs if user logges in
 const DisplayBlogs = ({ blogs, user, handleLogout }) => {
@@ -12,6 +13,8 @@ const DisplayBlogs = ({ blogs, user, handleLogout }) => {
                 {`logged in as ${user.name}`}
                 <button onClick={handleLogout}>logout</button>
             </p>
+
+            <CreateBlog />
 
             {blogs.map((blog) =>
                 <Blog key={blog.id} blog={blog} />
