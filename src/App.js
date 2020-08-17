@@ -44,6 +44,9 @@ const App = () => {
 				url: newUrl
 			}
 
+			const response = await blogService.create(blogObject);
+			console.log("the response is ...." , response);
+
 		} catch (exception) {
 			console.log("the eception for creating a new blog", exception);
 		}
