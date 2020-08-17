@@ -52,7 +52,7 @@ const App = () => {
 			setNewTitle("");
 			setNewAuthor("");
 			setNewUrl("");
-
+			
 		} catch (exception) {
 			console.log("the eception for creating a new blog", exception);
 		}
