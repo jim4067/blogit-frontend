@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import Blog from './components/Blog';
 import blogService from './services/blogs';
 import loginService from './services/login';
@@ -36,7 +36,7 @@ const App = () => {
 		}
 	}
 
-	const loginForm = () => {
+	const LoginForm = () => {
 
 		return (
 			<form onSubmit={handleLogin}>
@@ -51,13 +51,19 @@ const App = () => {
 		);
 	}
 
+	//the to display the blogs if the user is logges in
+	const DisplayBlogs = () => {
+
+		return (
+			blogs.map((blog) =>
+				<Blog key={blog.id} blog={blog} />
+			)
+		);
+	}
+
 	return (
 		<div>
-
-			<h2>blogs</h2>
-			{blogs.map(blog =>
-				<Blog key={blog.id} blog={blog} />
-			)}
+			{/*if user is null display login form*/}
 
 		</div>
 	)
