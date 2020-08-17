@@ -53,6 +53,7 @@ const App = () => {
 
 	//event hanlder to be fired when user logs out
 	const handleLogout = async () => {
+		
 		try {
 			window.localStorage.clear();
 			window.location.reload();
