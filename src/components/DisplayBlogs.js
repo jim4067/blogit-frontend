@@ -7,10 +7,16 @@ const DisplayBlogs = ({ blogs, user }) => {
     return (
         <div>
             <h2>Blogs</h2>
-            <p>{`logged in as ${user.name}`}</p>
+
+            <p>
+                {`logged in as ${user.name}`}
+                <button>logout</button>
+            </p>
+
             {blogs.map((blog) =>
                 <Blog key={blog.id} blog={blog} />
             )}
+
         </div>
     );
 }
