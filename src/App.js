@@ -11,6 +11,26 @@ const App = () => {
 	const [password, setPassword] = useState("");
 	const [user, setUser] = useState("");
 
+	//the states for value when creating a new blog
+	const [newTitle, setNewTitle] = useState("");
+	const [newAuthor, setNewAuthor] = useState("");
+	const [newUrl, setNewUrl] = useState("");
+
+	const createBlog = async (event) => {
+		event.preventDefault();
+
+		try {
+			const blogObject = {
+				title: newTitle,
+				author: newAuthor,
+				url: newUrl
+			}
+
+		} catch (exception) {
+			console.log("the eception for creating a new blog", exception);
+		}
+	}
+
 	useEffect(() => {
 		blogService
 			.getAll()
@@ -51,7 +71,7 @@ const App = () => {
 
 	//event hanlder to be fired when user logs out
 	const handleLogout = async () => {
-		
+
 		try {
 			window.localStorage.clear();
 			window.location.reload();
@@ -68,7 +88,10 @@ const App = () => {
 				<LoginForm handleLogin={handleLogin} username={username} setUsername={setUsername}
 					password={password} setPassword={setPassword} />
 				:
-				<DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout} />
+				<DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout}
+					handleTitleChange={({ target }) => setNewTitle(target.value)}
+					handleAuthorChage={({ target }) => setNewTitle(target.value)}
+					handleUrlChange={({ target }) => setNewUrl(target.value)} />
 			}
 
 		</div>
