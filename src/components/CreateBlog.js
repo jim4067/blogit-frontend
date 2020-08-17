@@ -5,7 +5,7 @@ const CreateBlog = () => {
 
     return(
         <div>
-
+            <h2>CreateNew</h2>
         </div>
     );
 }
