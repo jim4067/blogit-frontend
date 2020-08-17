@@ -25,7 +25,7 @@ const App = () => {
 
 		try {
 			const user = await loginService.login(
-				{username, password}
+				{ username, password }
 			);
 
 			setUsername("");
@@ -36,9 +36,9 @@ const App = () => {
 		}
 	}
 
-	return (
-		<div>
+	const loginForm = () => {
 
+		return (
 			<form onSubmit={handleLogin}>
 				<div>
 					username <input type='text' name='username' value={username} onChange={({ target }) => setUsername(target.value)} />
@@ -48,6 +48,11 @@ const App = () => {
 				</div>
 				<button type='submit'>login</button>
 			</form>
+		);
+	}
+
+	return (
+		<div>
 
 			<h2>blogs</h2>
 			{blogs.map(blog =>
