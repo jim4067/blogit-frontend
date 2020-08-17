@@ -47,6 +47,8 @@ const App = () => {
 			const response = await blogService.create(blogObject);
 			console.log("the response is ...." , response);
 
+			setBlogs(blogs.concat(response.data));
+
 			setNewTitle("");
 			setNewAuthor("");
 			setNewUrl("");
