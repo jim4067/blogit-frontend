@@ -36,6 +36,7 @@ const App = () => {
 		}
 	}
 
+	//component to display login
 	const LoginForm = () => {
 
 		return (
@@ -51,22 +52,30 @@ const App = () => {
 		);
 	}
 
-	//the to display the blogs if the user is logges in
+	//component to display blogs if user logges in
 	const DisplayBlogs = () => {
 
-		return (
-			blogs.map((blog) =>
+		return(
+			<div>
+				<h2>Blogs</h2>
+				{blogs.map((blog) =>
 				<Blog key={blog.id} blog={blog} />
-			)
+			)}
+			</div>
 		);
 	}
 
 	return (
 		<div>
-			{/*if user is null display login form*/}
+			{user === ""
+			?
+			<LoginForm />
+			:
+			<DisplayBlogs />
+			}
 
 		</div>
-	)
+	);
 }
 
 export default App
