@@ -90,7 +90,7 @@ const App = () => {
 				:
 				<DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout}
 					handleTitleChange={({ target }) => setNewTitle(target.value)}
-					handleAuthorChage={({ target }) => setNewTitle(target.value)}
+					handleAuthorChage={({ target }) => setNewAuthor(target.value)}
 					handleUrlChange={({ target }) => setNewUrl(target.value)} />
 			}
 
