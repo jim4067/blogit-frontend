@@ -3,7 +3,7 @@ import Blog from './Blog';
 import CreateBlog from './CreateBlog';
 
 //component to display blogs if user logges in
-const DisplayBlogs = ({ blogs, user, handleLogout }) => {
+const DisplayBlogs = ({ blogs, user, handleLogout, createBlog, handleTitleChange, handleAuthorChage , handleUrlChange }) => {
 
     return (
         <div>
@@ -14,7 +14,8 @@ const DisplayBlogs = ({ blogs, user, handleLogout }) => {
                 <button onClick={handleLogout}>logout</button>
             </p>
 
-            <CreateBlog />
+            <CreateBlog createBlog={createBlog} handleTitleChange={handleTitleChange} handleAuthorChage={handleAuthorChage}
+             handleUrlChange={handleUrlChange} />
 
             {blogs.map((blog) =>
                 <Blog key={blog.id} blog={blog} />
