@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm';
 import blogService from './services/blogs';
 import loginService from './services/login';
 import './App.css';
+import Blog from './components/Blog';
 
 const App = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -20,6 +21,15 @@ const App = () => {
 			)
 	}, []);
 
+	useEffect(() => {
+		const loggedUserJSON = window.localStorage.getItem('loggedBlogAppUser');
+		if(loggedUserJSON){
+			const user = JSON.parse(loggedUserJSON);
+			setUser(user);
+			blogService.setToken(user.token);
+		}
+	}, []);
+
 	const handleLogin = async (event) => {
 		event.preventDefault();
 		console.log("logging in with", username, password);
@@ -30,7 +40,7 @@ const App = () => {
 			);
 
 			window.localStorage.setItem(
-				'loggedBlogAppuser', JSON.stringify(user)
+				'loggedBlogAppUser', JSON.stringify(user)
 			);
 
 			setUsername("");
