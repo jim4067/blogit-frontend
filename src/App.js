@@ -23,7 +23,7 @@ const App = () => {
 
 	useEffect(() => {
 		const loggedUserJSON = window.localStorage.getItem('loggedBlogAppUser');
-		if(loggedUserJSON){
+		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON);
 			setUser(user);
 			blogService.setToken(user.token);
@@ -54,7 +54,8 @@ const App = () => {
 	//event hanlder to be fired when user logs out
 	const handleLogout = async () => {
 		try {
-			
+			window.localStorage.clear();
+			window.location.reload();
 		} catch (exception) {
 			console.log("the logout exception is...", exception);
 		}
@@ -67,7 +68,7 @@ const App = () => {
 				<LoginForm handleLogin={handleLogin} username={username} setUsername={setUsername}
 					password={password} setPassword={setPassword} />
 				:
-				<DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout}/>
+				<DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout} />
 			}
 
 		</div>
