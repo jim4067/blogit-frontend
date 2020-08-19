@@ -15,11 +15,6 @@ const App = () => {
 	const [password, setPassword] = useState("");
 	const [user, setUser] = useState("");
 
-	//the states for value when creating a new blog
-	const [newTitle, setNewTitle] = useState("");
-	const [newAuthor, setNewAuthor] = useState("");
-	const [newUrl, setNewUrl] = useState("");
-
 	//the state for nofitification
 	const [message, setMessage] = useState(null);
 
@@ -41,15 +36,9 @@ const App = () => {
 	}, []);
 
 	//the event handler for adding a new blog
-	const createBlog = async (event) => {
-		event.preventDefault();
+	const addBlog = async (blogObject) => {
 
 		try {
-			const blogObject = {
-				title: newTitle,
-				author: newAuthor,
-				url: newUrl
-			}
 
 			const response = await blogService.create(blogObject);
 			console.log("the response is ....", response);
@@ -62,9 +51,6 @@ const App = () => {
 
 			setBlogs(blogs.concat(response.data));
 
-			setNewTitle("");
-			setNewAuthor("");
-			setNewUrl("");
 
 		} catch (exception) {
 			console.log("the eception for creating a new blog", exception);
@@ -123,10 +109,8 @@ const App = () => {
 				</Togglable>
 				:
 				<DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout}
-					createBlog={createBlog}
-					handleTitleChange={({ target }) => setNewTitle(target.value)}
-					handleAuthorChage={({ target }) => setNewAuthor(target.value)}
-					handleUrlChange={({ target }) => setNewUrl(target.value)} />
+					createBlog={addBlog}
+				/>
 			}
 
 		</div>
