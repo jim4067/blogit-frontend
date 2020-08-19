@@ -1,27 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 const mainStyles = {
-  "border": ".3px solid",
-  "margin" : "3px",
-  "padding" : "4px"
+	"border": ".3px solid",
+	"margin": "3px",
+	"padding": "4px"
 }
 
 const HideStyles = {
 
 }
 
-const Blog = ({ blog }) => (
+const Blog = ({ blog }) => {
 
-  <div style={mainStyles} >
-    {blog.title} {blog.author}<button>view</button>
-    <div >
-      {blog.url} <br />
+	return (
+		<div style={mainStyles} >
+			{blog.title} {blog.author}
+			<button>view</button>
+
+			<div >
+				{blog.url} <br />
       likes: {blog.likes} <br />
-      {blog.author}
-    </div>
+				{blog.author}
+			</div>
 
-  </div>
-)
+		</div>
+	);
+}
+
 
 export default Blog;
 
