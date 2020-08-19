@@ -1,9 +1,9 @@
 import React from 'react';
 import Blog from './Blog';
-import CreateBlog from './CreateBlog';
+import BlogForm from './BlogForm';
 
 //component to display blogs if user logges in
-const DisplayBlogs = ({ blogs, user, handleLogout, createBlog, handleTitleChange, handleAuthorChage , handleUrlChange }) => {
+const DisplayBlogs = ({ blogs, user, handleLogout, createBlog }) => {
 
     return (
         <div>
@@ -14,8 +14,7 @@ const DisplayBlogs = ({ blogs, user, handleLogout, createBlog, handleTitleChange
                 <button onClick={handleLogout}>logout</button>
             </p>
 
-            <CreateBlog createBlog={createBlog} handleTitleChange={handleTitleChange} handleAuthorChage={handleAuthorChage}
-             handleUrlChange={handleUrlChange} />
+            <BlogForm createBlog={createBlog} />
 
             {blogs.map((blog) =>
                 <Blog key={blog.id} blog={blog} />
