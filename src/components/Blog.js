@@ -1,7 +1,7 @@
 import React from 'react'
 
 const mainStyles = {
-  "border": "solid",
+  "border": ".3px solid",
   "margin" : "3px",
   "padding" : "4px"
 }
