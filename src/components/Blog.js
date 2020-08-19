@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
 
-const mainStyles = {
-	"border": ".3px solid",
-	"margin": "3px",
-	"padding": "4px"
-}
-
-const HideStyles = {
-
-}
-
 const Blog = ({ blog }) => {
+	const [visible, setVisible] = useState(true);
+
+	const mainStyles = {
+		"border": ".3px solid",
+		"margin": "3px",
+		"padding": "4px"
+	};
+
+	const hideByDefault = { "display": visible ? "none" : "" };
+
+	const toggleVisibility = () => {
+		setVisible(!visible);
+	}
 
 	return (
 		<div style={mainStyles} >
 			{blog.title} {blog.author}
-			<button>view</button>
+			<button onClick={toggleVisibility} >view</button>
 
-			<div >
+			<div style={hideByDefault}>
 				{blog.url} <br />
-      likes: {blog.likes} <br />
+         likes: {blog.likes} <br />
 				{blog.author}
 			</div>
 
