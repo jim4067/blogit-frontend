@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Blog from './components/Blog';
+import BlogForm from './components/BlogForm';
 import DisplayBlogs from './components/DisplayBlogs';
 import LoginForm from './components/LoginForm';
 import Notification from './components/Notification';
@@ -49,6 +51,7 @@ const App = () => {
 				setMessage(null);
 			}, 5000);
 
+			//concatenate the created blog with the array of the blogs
 			setBlogs(blogs.concat(response.data));
 
 
@@ -104,13 +107,21 @@ const App = () => {
 			{user === ""
 				?
 				<Togglable buttonLabel="log in">
-					<LoginForm handleLogin={handleLogin} username={username} setUsername={setUsername}
-						password={password} setPassword={setPassword} />
+					<LoginForm handleLogin={handleLogin}
+						username={username}
+						setUsername={setUsername}
+						password={password}
+						setPassword={setPassword} />
 				</Togglable>
 				:
-				<DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout}
-					createBlog={addBlog}
-				/>
+				<DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout}>
+
+					<BlogForm createBlog={addBlog} />
+
+					{blogs.map((blog) =>
+						<Blog key={blog.id} blog={blog} />
+					)}
+				</DisplayBlogs>
 			}
 
 		</div>
