@@ -117,8 +117,10 @@ const App = () => {
 
 			{user === ""
 				?
-				<LoginForm handleLogin={handleLogin} username={username} setUsername={setUsername}
-					password={password} setPassword={setPassword} />
+				<Togglable buttonLabel="log in">
+					<LoginForm handleLogin={handleLogin} username={username} setUsername={setUsername}
+						password={password} setPassword={setPassword} />
+				</Togglable>
 				:
 				<DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout}
 					createBlog={createBlog}
