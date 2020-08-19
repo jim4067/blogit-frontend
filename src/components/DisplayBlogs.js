@@ -1,6 +1,4 @@
 import React from 'react';
-import Blog from './Blog';
-import BlogForm from './BlogForm';
 
 //component to display blogs if user logges in
 const DisplayBlogs = (props) => {
