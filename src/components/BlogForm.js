@@ -1,7 +1,7 @@
 import React from 'react';
 
 //form component to create new blogs
-const CreateBlog = ({createBlog, newTitle, newAuthor, newUrl, handleTitleChange, handleAuthorChage , handleUrlChange}) => {
+const BlogForm = ({createBlog, newTitle, newAuthor, newUrl, handleTitleChange, handleAuthorChage , handleUrlChange}) => {
  
     return (
         <div>
@@ -24,4 +24,4 @@ const CreateBlog = ({createBlog, newTitle, newAuthor, newUrl, handleTitleChange,
     );
 }
 
-export default CreateBlog;
+export default BlogForm;
