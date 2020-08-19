@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 
 //form component to create new blogs
 const BlogForm = ({ createBlog }) => {
@@ -8,12 +8,30 @@ const BlogForm = ({ createBlog }) => {
     const [newAuthor, setNewAuthor] = useState("");
     const [newUrl, setNewUrl] = useState("");
 
+    const addBlog = async (event) => {
+
+        event.preventDefault();
+        try {
+            const createBlog = {
+                title: newTitle,
+                author: newAuthor,
+                url: newUrl
+            }
+
+            setNewTitle("");
+            setNewAuthor("");
+            setNewUrl("");
+
+        } catch (exception) {
+            console.log("the exception from BlogForm....", exception);
+        }
+    }
 
     return (
         <div>
             <h2>CreateNew</h2>
 
-            <form onSubmit={createBlog} >
+            <form onSubmit={addBlog} >
                 <div>
                     title <input type='text' name='title' value={newTitle} onChange={({ target }) => setNewTitle(target.value)} />
                 </div>
