@@ -20,11 +20,16 @@ const App = () => {
 	//the state for nofitification
 	const [message, setMessage] = useState(null);
 
+	//sorting the blogs
+	const sortBlogs = (blogs) => {
+		return blogs.sort((a, b) => b.likes - a.likes)
+	}
+
 	useEffect(() => {
 		blogService
 			.getAll()
 			.then(blogs =>
-				setBlogs(blogs)
+				setBlogs(sortBlogs(blogs))
 			)
 	}, []);
 
