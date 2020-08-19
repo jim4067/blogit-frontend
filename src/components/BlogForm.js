@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 
 //form component to create new blogs
 const BlogForm = ({ createBlog }) => {
@@ -15,13 +15,13 @@ const BlogForm = ({ createBlog }) => {
 
             <form onSubmit={createBlog} >
                 <div>
-                    title <input type='text' name='title' value={newTitle} onChange={handleTitleChange} />
+                    title <input type='text' name='title' value={newTitle} onChange={({ target }) => setNewTitle(target.value)} />
                 </div>
                 <div>
-                    author <input type='text' name='author' value={newAuthor} onChange={handleAuthorChage} />
+                    author <input type='text' name='author' value={newAuthor} onChange={({ target }) => setNewAuthor(target.value)} />
                 </div>
                 <div>
-                    url <input type='text' name='url' value={newUrl} onChange={handleUrlChange} />
+                    url <input type='text' name='url' value={newUrl} onChange={({ target }) => setNewUrl(target.value)} />
                 </div>
                 <button type='submit'>create</button>
             </form>
