@@ -54,6 +54,7 @@ const App = () => {
 			//concatenate the created blog with the array of the blogs
 			setBlogs(blogs.concat(response.data));
 
+			console.log("after adding anew blog all blogs are....", blogs)
 
 		} catch (exception) {
 			console.log("the eception for creating a new blog", exception);
