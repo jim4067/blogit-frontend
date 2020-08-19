@@ -11,20 +11,16 @@ const BlogForm = ({ createBlog }) => {
     const addBlog = async (event) => {
 
         event.preventDefault();
-        try {
-            const createBlog = {
-                title: newTitle,
-                author: newAuthor,
-                url: newUrl
-            }
 
-            setNewTitle("");
-            setNewAuthor("");
-            setNewUrl("");
+        createBlog = ({
+            title: newTitle,
+            author: newAuthor,
+            url: newUrl
+        });
 
-        } catch (exception) {
-            console.log("the exception from BlogForm....", exception);
-        }
+        setNewTitle("");
+        setNewAuthor("");
+        setNewUrl("");
     }
 
     return (
