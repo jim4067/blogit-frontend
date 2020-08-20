@@ -85,11 +85,11 @@ const App = () => {
 		try {
 			const blog = blogs.find(b => b.id === id);
 
-			if(window.confirm(`remove blog ${blog.title} by ${blog.author}`)){
+			if (window.confirm(`remove blog ${blog.title} by ${blog.author}`)) {
 				await blogService.remove(id);
 				setBlogs(sortBlogs(blogs.filter(b => b.id !== id)));
 			}
-			
+
 		} catch (exception) {
 			console.log("the exception happened at the removal of blog function", exception);
 		}
@@ -156,9 +156,9 @@ const App = () => {
 					</Togglable>
 
 					{blogs.map((blog) =>
-						<Blog key={blog.id} blog={blog} 
-						increaseLikesOf={() => increaseLikesOf(blog.id)}
-						handleRemOf={() => handleRemOf(blog.id)} 
+						<Blog key={blog.id} blog={blog}
+							increaseLikesOf={() => increaseLikesOf(blog.id)}
+							handleRemOf={() => handleRemOf(blog.id)}
 						/>
 					)}
 				</DisplayBlogs>
