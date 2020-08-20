@@ -83,9 +83,13 @@ const App = () => {
 	//the code for removal of a blog
 	const handleRemOf = async (id) => {
 		try {
-			const response = await blogService.remove(id)
-			setBlogs(blogs.map(blog => blog.id !== id ? blog : response.data));
+			const blog = blogs.find(b => b.id === id);
 
+			if(window.confirm(`remove blog ${blog.title} by ${blog.author}`)){
+				await blogService.remove(id);
+				setBlogs(sortBlogs(blogs.filter(b => b.id !== id)));
+			}
+			
 		} catch (exception) {
 			console.log("the exception happened at the removal of blog function", exception);
 		}
