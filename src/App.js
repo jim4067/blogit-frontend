@@ -85,6 +85,7 @@ const App = () => {
 		try {
 			const response = await blogService.remove(id)
 			setBlogs(blogs.map(blog => blog.id !== id ? blog : response.data));
+
 		} catch (exception) {
 			console.log("the exception happened at the removal of blog function", exception);
 		}
@@ -151,7 +152,10 @@ const App = () => {
 					</Togglable>
 
 					{blogs.map((blog) =>
-						<Blog key={blog.id} blog={blog} increaseLikesOf={() => increaseLikesOf(blog.id)} />
+						<Blog key={blog.id} blog={blog} 
+						increaseLikesOf={() => increaseLikesOf(blog.id)}
+						handleRemOf={() => handleRemOf(blog.id)} 
+						/>
 					)}
 				</DisplayBlogs>
 			}
