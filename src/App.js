@@ -80,6 +80,15 @@ const App = () => {
 		}
 	}
 
+	//the code for removal of a blog
+	const handleRemOf = async (id) => {
+		try {
+			
+		} catch (exception) {
+			console.log("the exception happened at the removal of blog function", exception);
+		}
+	}
+
 	//the event hanlder for logging in
 	const handleLogin = async (event) => {
 		event.preventDefault();
