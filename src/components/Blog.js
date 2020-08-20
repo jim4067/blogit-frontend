@@ -18,7 +18,7 @@ const Blog = ({ blog , increaseLikesOf, handleRemOf}) => {
 	return (
 		<div style={mainStyles} >
 			{blog.title} {blog.author}
-			<button onClick={toggleVisibility} >view</button>
+			<button onClick={toggleVisibility} > {visible ? "view" : "hide"} </button>
 
 			<div style={hideByDefault}>
 				{blog.url}
