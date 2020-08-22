@@ -43,15 +43,18 @@ describe("the tests for clicking the buttons", () => {
             url: "http://localhost"
         }
 
+        const mockHandler = jest.fn();
+
         const component = render(
             <Blog blog={blog} />
         );
-
-        const viewButton = component.getByText("view");
-        const thehiddenDiv = component.container.querySelector('.hiddend-div');
+        const viewButton = component.container.querySelector(".viewButton");
 
         fireEvent.click(viewButton);
-        expect(thehiddenDiv).toBeDefined();
+        component.debug();
+
+        const theHiddenDiv = component.container.querySelector(".hidden-div")
+        expect(theHiddenDiv).toHaveStyle(`display : block`)
     });
 
     test("when the like button is clicked twice the event handler is called twice", () => {
@@ -69,7 +72,7 @@ describe("the tests for clicking the buttons", () => {
         );
 
         const likeButton = component.getByText("like");
-        fireEvent(likeButton);
+        fireEvent.click(likeButton);
 
         expect(mockHandler.mock.calls).toHaveLength(1);
     });
