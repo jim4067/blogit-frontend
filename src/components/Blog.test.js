@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import Blog from './Blog';
 
-test("the Blog component is rendered", () => {
+test("when the Blog component is rendered, the author & url are not shown", () => {
     const blog = {
         title: "the blog is in the test",
         author: "tester",
