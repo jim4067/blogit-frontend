@@ -29,15 +29,48 @@ describe("tests for the BlogForm", () => {
         const theHiddenDiv = component.container.querySelector('.hidden-div');
 
         expect(theHiddenDiv).toHaveStyle('display : none');
-        expect(theHiddenDiv).not.toBeDefined();
     });
 
+});
+
+describe("the tests for clicking the buttons", () => {
+
     test("when the view button is clicked the author and url are shown", () => {
+        const blog = {
+            title: "the blog is in the test",
+            author: "tester",
+            likes: 3,
+            url: "http://localhost"
+        }
+
+        const component = render(
+            <Blog blog={blog} />
+        );
+
         const viewButton = component.getByText("view");
         const thehiddenDiv = component.container.querySelector('.hiddend-div');
 
         fireEvent.click(viewButton);
         expect(thehiddenDiv).toBeDefined();
     });
-});
 
+    test("when the like button is clicked twice the event handler is called twice", () => {
+        const blog = {
+            title: "the blog is in the test",
+            author: "tester",
+            likes: 3,
+            url: "http://localhost"
+        }
+
+        const mockHandler = jest.fn();
+
+        const component = render(
+            <Blog blog={blog} increaseLikesOf={mockHandler} />
+        );
+
+        const likeButton = component.getByText("like");
+        fireEvent(likeButton);
+
+        expect(mockHandler.mock.calls).toHaveLength(1);
+    });
+});
