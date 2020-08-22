@@ -19,10 +19,6 @@ module.exports = {
         "react", "jest"
     ],
     "rules": {
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
         "eqeqeq": "error",
         "no-trailing-spaces": "error",
         "object-curly-spacing": [
