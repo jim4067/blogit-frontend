@@ -3,7 +3,9 @@ import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import Blog from './Blog';
 
-test("when the Blog component is rendered, the author & url are not shown", () => {
+describe("tests for the BlogForm", () => {
+    let component;
+
     const blog = {
         title: "the blog is in the test",
         author: "tester",
@@ -11,14 +13,25 @@ test("when the Blog component is rendered, the author & url are not shown", () =
         url: "http://localhost"
     }
 
-    const component = render(
-        <Blog blog={blog} />
-    );
+    beforeEach(() => {
+        component = render(
+            <Blog blog={blog} />
+        );
+    });
 
-    const theHiddenDiv = component.container.querySelector('.hidden-div');
+    test("when the Blog component is rendered, the author & url are not shown", () => {
 
-    expect(component.container).toHaveTextContent("the blog is in the test");
-    expect(component.container).toHaveTextContent("tester");
 
-    expect(theHiddenDiv).toHaveStyle('display : none');
+        const theHiddenDiv = component.container.querySelector('.hidden-div');
+
+        expect(component.container).toHaveTextContent("the blog is in the test");
+        expect(component.container).toHaveTextContent("tester");
+
+        expect(theHiddenDiv).toHaveStyle('display : none');
+    });
+
+    test("when the view button is clicked the author and url are shown", () => {
+
+    });
 });
+
