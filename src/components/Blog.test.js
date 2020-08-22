@@ -19,17 +19,20 @@ describe("tests for the BlogForm", () => {
         );
     });
 
-    test("when the Blog component is rendered, the author & url are not shown", () => {
-        const theHiddenDiv = component.container.querySelector('.hidden-div');
+    test("when the Blog component is rendered", () => {
 
         expect(component.container).toHaveTextContent("the blog is in the test");
         expect(component.container).toHaveTextContent("tester");
+    });
+
+    test("the author & url are not shown", () => {
+        const theHiddenDiv = component.container.querySelector('.hidden-div');
 
         expect(theHiddenDiv).toHaveStyle('display : none');
     });
 
     test("when the view button is clicked the author and url are shown", () => {
-
+        const the hiddenDiv = component.container.querySelector('.hiddend-div');
     });
 });
 
