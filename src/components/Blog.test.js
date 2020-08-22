@@ -73,8 +73,9 @@ describe("the tests for clicking the buttons", () => {
         );
 
         const likeButton = component.getByText("like");
-        fireEvent.click(likeButton);
+            fireEvent.click(likeButton);
+            fireEvent.click(likeButton);
 
-        expect(mockHandler.mock.calls).toHaveLength(1);
+        expect(mockHandler.mock.calls).toHaveLength(2);
     });
 });
