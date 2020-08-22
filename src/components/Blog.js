@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Blog = ({ blog , increaseLikesOf, handleRemOf}) => {
+const Blog = ({ blog, increaseLikesOf, handleRemOf }) => {
 	const [visible, setVisible] = useState(true);
 
 	const mainStyles = {
@@ -24,7 +24,7 @@ const Blog = ({ blog , increaseLikesOf, handleRemOf}) => {
 				{blog.url}
 				<br />
          likes: {blog.likes}
-		 		<button onClick={increaseLikesOf} > like </button> {/*should you declare the brackets here or leave it*/}
+				<button onClick={increaseLikesOf} > like </button> {/*should you declare the brackets here or leave it*/}
 				<br />
 				{blog.author}
 				<br />
