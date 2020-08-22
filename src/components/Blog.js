@@ -20,7 +20,7 @@ const Blog = ({ blog, increaseLikesOf, handleRemOf }) => {
 			{blog.title} {blog.author}
 			<button onClick={toggleVisibility} > {visible ? "view" : "hide"} </button>
 
-			<div style={hideByDefault}>
+			<div style={hideByDefault} className='hidden-div' >
 				{blog.url}
 				<br />
          likes: {blog.likes}
