@@ -5,10 +5,10 @@ import Blog from './Blog';
 
 test("the Blog component is rendered", () => {
     const blog = {
-        title : "the blog is in the test",
-        author : "tester",
-        likes : 3,
-        url : "http://localhost"
+        title: "the blog is in the test",
+        author: "tester",
+        likes: 3,
+        url: "http://localhost"
     }
 
     const component = render(
