@@ -20,7 +20,6 @@ describe("tests for the BlogForm", () => {
     });
 
     test("when the Blog component is rendered, the author & url are not shown", () => {
-
         const theHiddenDiv = component.container.querySelector('.hidden-div');
 
         expect(component.container).toHaveTextContent("the blog is in the test");
