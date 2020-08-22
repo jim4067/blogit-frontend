@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import Blog from './Blog';
 
-test("the Blog component is rendred", () => {
+test("the Blog component is rendered", () => {
     const blog = {
         title : "the blog is in the test",
         author : "tester",
@@ -15,5 +15,10 @@ test("the Blog component is rendred", () => {
         <Blog blog={blog} />
     );
 
-    expect(component.container).toHaveContent("the blog is in the test");
+    const theHiddenDiv = component.container.querySelector('.hidden-div');
+
+    expect(component.container).toHaveTextContent("the blog is in the test");
+    expect(component.container).toHaveTextContent("tester");
+
+    expect(theHiddenDiv).toHaveStyle('display : none');
 });
