@@ -35,6 +35,7 @@
   },
   "proxy": "http://localhost:3030",
   "devDependencies": {
+    "cypress": "^5.0.0",
     "eslint-plugin-jest": "^23.20.0"
   }
 }
