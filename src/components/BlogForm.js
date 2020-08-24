@@ -12,7 +12,7 @@ const BlogForm = ({ createBlog }) => {
 
         event.preventDefault();
 
-        createBlog ({
+        createBlog({
             title: newTitle,
             author: newAuthor,
             url: newUrl
@@ -32,7 +32,7 @@ const BlogForm = ({ createBlog }) => {
                     title <input type='text' name='title' value={newTitle} onChange={({ target }) => setNewTitle(target.value)} />
                 </div>
                 <div>
-                    author <input type='text' name='author' value={newAuthor} onChange={({ target }) => setNewAuthor(target.value)} />
+                    author <input id='author' type='text' name='author' value={newAuthor} onChange={({ target }) => setNewAuthor(target.value)} />
                 </div>
                 <div>
                     url <input type='text' name='url' value={newUrl} onChange={({ target }) => setNewUrl(target.value)} />
