@@ -29,7 +29,24 @@ describe("blog app", function () {
         });
     });
 
+    describe.only("when logged in ", function () {
+        beforeEach(function () {
+            cy.contains("login").click();
+            cy.get('#username').type("jim4067");
+            cy.get('#password').type("pass123");
+            cy.get('#login-button').click();
+        });
 
+        it("a user can create a blog", function () {
+            cy.contains("new blog").click();
+            cy.get('input:first').type("a new blog by cypress");
+            cy.get('input:second').type("new author");
+            cy.get('input:third').type("a new url");
+            cy.contains("create").click();
+
+            cy.contains("a new blog created by cypress")
+        });
+    });
 
 
 });
