@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 const Togglable = (props) => {
     const [visible, setVisible] = useState(false)
 
-    //by default the login button is set to display:"" since state is false
-    //in short -> show button and hide the login form
+    //by default the button is set to display:"" since state is false
+    //in short -> show button and hide the  form
     const hideWhenVisible = { display: visible ? "none" : "" };
     //by default the form display is set to display:"none" since state has changed to true
-    //in short -> hide button for login and display hte noteform with the cancel button
+    //in short -> hide button and display the form with the cancel button
     const showWhenVisible = { display: visible ? "" : "none" };
 
     const toggleVisibility = () => {
@@ -30,3 +30,7 @@ const Togglable = (props) => {
 }
 
 export default Togglable;
+
+//to do
+//make the styling for adding the blogs to be round with the + sign / something similar
+//find the way to style this component effectively without affecting the content below it
