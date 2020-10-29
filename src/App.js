@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Blog from './components/Blog';
 import BlogForm from './components/BlogForm';
 import DisplayBlogs from './components/DisplayBlogs';
 import LoginForm from './components/LoginForm';
 import Notification from './components/Notification';
 import Togglable from './components/Togglable';
+import { showNotification } from './reducers/notificationReducer'; //action creator for notifications
 import blogService from './services/blogs';
 import loginService from './services/login';
 import './App.css';
 
 const App = () => {
+	const dispatch = useDispatch();
+
 	const [blogs, setBlogs] = useState([]);
 
 	//the states for the login form
@@ -18,7 +22,7 @@ const App = () => {
 	const [user, setUser] = useState("");
 
 	//the state for nofitification
-	const [message, setMessage] = useState(null);
+	//const [message, setMessage] = useState(null);// for notifications dispatch the actions for the different actions
 
 	//sorting the blogs
 	const sortBlogs = (blogs) => {
@@ -50,11 +54,16 @@ const App = () => {
 			const response = await blogService.create(blogObject);
 			console.log("the response is ....", response);
 
-			//the notification for when a new blog is added
+			/*
+			 *the old notification for when a new blog is added
+
 			setMessage(`a new blog -> ${blogObject.title} by ${blogObject.author} added`);
 			setTimeout(() => {
 				setMessage(null);
 			}, 5000);
+			*/
+			//the new way for notifications from the redux store
+			dispatch(showNotification(`a new blog -> ${blogObject.title} by ${blogObject.author} added`, 5))
 
 			//concatenate the created blog with the array of the blogs
 			setBlogs(blogs.concat(response.data));
@@ -114,10 +123,12 @@ const App = () => {
 			setUser(user);
 
 		} catch (exception) {
-			setMessage("wrong username or password");
+			/*setMessage("wrong username or password");
 			setTimeout(() => {
 				setMessage(null);
 			}, 5000);
+			*/
+			dispatch(showNotification("wrong username or password", 5));
 
 			console.log("the exception ", exception);
 		}
@@ -137,7 +148,7 @@ const App = () => {
 	return (
 		<div>
 
-			<Notification message={message} />
+			<Notification  />
 
 			{user === ""
 				?

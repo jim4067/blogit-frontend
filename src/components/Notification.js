@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';//to access the state of the notification reducer
 
 const wrong_login_styles = {
     "border": "3px solid red",
@@ -20,23 +21,26 @@ const blog_addition_styles = {
     "text-align": "center"
 }
 
-const Notification = ({ message }) => {
+const Notification = () => {
+    const notification = useSelector(state => state.notification);
 
-    if (message === null) {
+    if (notification === null) {
         return null
-    } else if (message === "wrong username or password") {
+    } else if (notification === "wrong username or password") {
         return (
             <div className='error' style={wrong_login_styles}>
-                {message}
+                {notification}
             </div>
         )
-    } else if (message.includes("a new blog")) {
+    } else if (notification.includes("a new blog")) {
         return (
             <div className='error' style={blog_addition_styles}>
-                {message}
+                {notification}
             </div>
         )
     }
 }
 
 export default Notification;
+
+//where notification is was message so as to access the message state in app component;
