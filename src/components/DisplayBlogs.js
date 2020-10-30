@@ -1,10 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Blog from './Blog';
+import { likeBlog, removeBlog } from '../reducers/blogReducer';
 
 //component to display blogs if user logges in
+//Putting the action creators for removing and liking a blog here since it is higher than the Blog component
 const DisplayBlogs = (props) => {
     const blogs = useSelector(state => state.blogs);
+    const dispatch = useDispatch();
 
     return (
         <div>
@@ -17,10 +20,16 @@ const DisplayBlogs = (props) => {
 
             {
                 blogs.map((blog) =>
-                    <Blog key={blog.id} blog={blog} />
-            )}
+                    <Blog
+                        key={blog.id}
+                        blog={blog}
+                        increaseLikesOf={() => dispatch(likeBlog(blog.id))}
+                        handleRemOf={() => dispatch(removeBlog(blog.id))}
+                    />
+                )
+            }
 
-            {/* {props.children} */}
+            {props.children}
 
         </div>
     );
