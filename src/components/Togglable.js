@@ -34,3 +34,8 @@ export default Togglable;
 //to do
 //make the styling for adding the blogs to be round with the + sign / something similar
 //find the way to style this component effectively without affecting the content below it
+
+//IMPORTANT NOTE
+//when styling this component use the buttonLabel to know how to style it
+//eg if(buttonLabel == 'login') use LoginButton styles else if
+//the buttonLabel is something else, use those styles

@@ -10,7 +10,7 @@ const notificationReducer = (state = null, action) => {
 }
 
 //for clearing the setTimout method;
-//for async actions use redux-thunk 
+//for async actions use redux-thunk
 let timeoutID;
 
 export const showNotification = (message, time) => {

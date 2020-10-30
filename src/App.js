@@ -85,7 +85,7 @@ const App = () => {
 			//setBlogs(response.data); Do not use this. this results in an error
 			setBlogs(blogs.map(blog => blog.id !== id ? blog : response.data));
 		} catch (exception) {
-			console.log("the exception was caught in time")
+			console.log("the exception was caught in time", exception)
 		}
 	}
 
@@ -148,7 +148,7 @@ const App = () => {
 	return (
 		<div>
 
-			<Notification  />
+			<Notification />
 
 			{user === ""
 				?

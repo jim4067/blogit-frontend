@@ -43,4 +43,4 @@ const Notification = () => {
 
 export default Notification;
 
-//where notification is was message so as to access the message state in app component;
+//use the useState func to access the state in the redux store for the app
