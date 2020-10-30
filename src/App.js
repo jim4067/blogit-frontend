@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Blog from './components/Blog';
 import BlogForm from './components/BlogForm';
 import DisplayBlogs from './components/DisplayBlogs';
 import LoginForm from './components/LoginForm';
 import Notification from './components/Notification';
 import Togglable from './components/Togglable';
 import { showNotification } from './reducers/notificationReducer'; //action creator for notifications
+import { initializeState } from './reducers/blogReducer';
 import blogService from './services/blogs';
 import loginService from './services/login';
 import './App.css';
@@ -14,7 +14,7 @@ import './App.css';
 const App = () => {
 	const dispatch = useDispatch();
 
-	const [blogs, setBlogs] = useState([]);
+	//const [blogs, setBlogs] = useState([]);
 
 	//the states for the login form
 	const [username, setUsername] = useState("");
@@ -25,17 +25,13 @@ const App = () => {
 	//const [message, setMessage] = useState(null);// for notifications dispatch the actions for the different actions
 
 	//sorting the blogs
-	const sortBlogs = (blogs) => {
-		return blogs.sort((a, b) => b.likes - a.likes)
-	}
+	// const sortBlogs = (blogs) => {
+	// 	return blogs.sort((a, b) => b.likes - a.likes)
+	// }
 
 	useEffect(() => {
-		blogService
-			.getAll()
-			.then(blogs =>
-				setBlogs(sortBlogs(blogs))
-			)
-	}, []);
+		dispatch(initializeState());
+	}, [dispatch]);
 
 	useEffect(() => {
 		const loggedUserJSON = window.localStorage.getItem('loggedBlogAppUser');
@@ -46,6 +42,8 @@ const App = () => {
 		}
 	}, []);
 
+
+	/*uncomment this piece. It is vital for the addition of a blog
 	//the event handler for adding a new blog
 	const addBlog = async (blogObject) => {
 
@@ -54,19 +52,11 @@ const App = () => {
 			const response = await blogService.create(blogObject);
 			console.log("the response is ....", response);
 
-			/*
-			 *the old notification for when a new blog is added
-
-			setMessage(`a new blog -> ${blogObject.title} by ${blogObject.author} added`);
-			setTimeout(() => {
-				setMessage(null);
-			}, 5000);
-			*/
 			//the new way for notifications from the redux store
 			dispatch(showNotification(`a new blog -> ${blogObject.title} by ${blogObject.author} added`, 5))
 
 			//concatenate the created blog with the array of the blogs
-			setBlogs(blogs.concat(response.data));
+			//setBlogs(blogs.concat(response.data));
 
 			console.log("after adding anew blog all blogs are....", blogs)
 
@@ -74,35 +64,42 @@ const App = () => {
 			console.log("the eception for creating a new blog", exception);
 		}
 	}
+	*/
 
-	//the code for updating the number of likes
-	const increaseLikesOf = async (id) => {
-		try {
-			const blog = blogs.find(b => b.id === id);
-			const changedBlog = { ...blog, likes: blog.likes + 1 };
 
-			const response = await blogService.update(id, changedBlog);
-			//setBlogs(response.data); Do not use this. this results in an error
-			setBlogs(blogs.map(blog => blog.id !== id ? blog : response.data));
-		} catch (exception) {
-			console.log("the exception was caught in time", exception)
-		}
+	/*uncomment this if everything breaks
+//the code for updating the number of likes
+const increaseLikesOf = async (id) => {
+	try {
+		const blog = blogs.find(b => b.id === id);
+		const changedBlog = { ...blog, likes: blog.likes + 1 };
+
+		const response = await blogService.update(id, changedBlog);
+		//setBlogs(response.data); Do not use this. this results in an error
+		//show a notification when you vote for a blog. E.G `you liked the blog {blog.content} by {blog.author}`
+		setBlogs(blogs.map(blog => blog.id !== id ? blog : response.data));
+	} catch (exception) {
+		console.log("the exception was caught in time", exception)
 	}
+}
 
-	//the code for removal of a blog
-	const handleRemOf = async (id) => {
-		try {
-			const blog = blogs.find(b => b.id === id);
+//the code for removal of a blog
 
-			if (window.confirm(`remove blog ${blog.title} by ${blog.author}`)) {
-				await blogService.remove(id);
-				setBlogs(sortBlogs(blogs.filter(b => b.id !== id)));
-			}
 
-		} catch (exception) {
-			console.log("the exception happened at the removal of blog function", exception);
+const handleRemOf = async (id) => {
+	try {
+		const blog = blogs.find(b => b.id === id);
+
+		if (window.confirm(`remove blog ${blog.title} by ${blog.author}`)) { //if true then dispatch the action for removing a blog
+			await blogService.remove(id);
+			setBlogs(sortBlogs(blogs.filter(b => b.id !== id)));
 		}
+
+	} catch (exception) {
+		console.log("the exception happened at the removal of blog function", exception);
 	}
+}
+*/
 
 	//the event hanlder for logging in
 	const handleLogin = async (event) => {
@@ -160,18 +157,26 @@ const App = () => {
 						setPassword={setPassword} />
 				</Togglable>
 				:
-				<DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout}>
+				// <DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout}>
+
+				// 	<Togglable buttonLabel="new blog">
+				// 		<BlogForm createBlog={addBlog} />
+				// 	</Togglable>
+
+				// 	{blogs.map((blog) =>
+				// 		<Blog key={blog.id} blog={blog}
+				// 			increaseLikesOf={() => increaseLikesOf(blog.id)}
+				// 			handleRemOf={() => handleRemOf(blog.id)}
+
+				// 		/>
+				// 	) }
+				// </DisplayBlogs>
+				<DisplayBlogs>
 
 					<Togglable buttonLabel="new blog">
-						<BlogForm createBlog={addBlog} />
+						<BlogForm />
 					</Togglable>
 
-					{blogs.map((blog) =>
-						<Blog key={blog.id} blog={blog}
-							increaseLikesOf={() => increaseLikesOf(blog.id)}
-							handleRemOf={() => handleRemOf(blog.id)}
-						/>
-					)}
 				</DisplayBlogs>
 			}
 
@@ -180,3 +185,13 @@ const App = () => {
 }
 
 export default App;
+
+
+/*
+		 *the old notification for when a new blog is added
+
+		setMessage(`a new blog -> ${blogObject.title} by ${blogObject.author} added`);
+		setTimeout(() => {
+			setMessage(null);
+		}, 5000);
+*/
