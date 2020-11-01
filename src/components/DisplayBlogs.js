@@ -13,10 +13,10 @@ const DisplayBlogs = (props) => {
         <div>
             <h2>Blogs</h2>
 
-            {/* <p>
+            <p>
                 {`logged in as ${props.user.name}`}
                 <button onClick={props.handleLogout}>logout</button>
-            </p> */}
+            </p>
 
             {
                 blogs.map((blog) =>
