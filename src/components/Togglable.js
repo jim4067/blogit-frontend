@@ -3,12 +3,48 @@ import styled from "styled-components";
 
 //styles for the buttons (loggin in, creating a new blog and cancelling)
 const LoginButton = styled.button`
-    color: palevioletred;
-    margin-top: 40vh;
+	background-color: #f1f1f1;
+	border: none;
+	border-radius: 6px;
+	box-shadow: 0 5px 15px -5px #00000070;
+	color: #3498db;
+	font-size: large;
+	height: 40px;
+	margin-top: 40vh;
+	position: relative;
+	text-align: center;
+	transition: 0.2s linear;
+    width: 200px;
+    
+    :hover{
+        color: white;
+        background-color: #3498db;
+        cursor: pointer;
+        transform: scale(1.1);      
+    }
 `;
 
 const LoginDiv = styled.div`
 	text-align: center;
+`;
+
+const LoginCancel = styled.button`
+	background-color: #f1f1f1;
+	border: none;
+	border-radius: 6px;
+	box-shadow: 0 5px 15px -5px #00000070;
+	color: #3498db;
+	font-size: large;
+	text-align: center;
+	transition: 0.2s linear;
+	width: 200px;
+
+	:hover {
+		color: white;
+		background-color: red;
+		cursor: pointer;
+		transform: scale(1.1);
+	}
 `;
 
 const Togglable = (props) => {
@@ -43,10 +79,10 @@ const Togglable = (props) => {
                 <div style={showWhenVisible}>
                     {props.children}
 
-                    <button onClick={toggleVisibility}>
+                    <LoginCancel onClick={toggleVisibility}>
                         {" "}
-						cancel the login button{" "}
-                    </button>
+						cancel {" "}
+                    </LoginCancel>
                 </div>
             </div>
         );
