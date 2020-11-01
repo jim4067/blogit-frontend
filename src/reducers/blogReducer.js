@@ -35,9 +35,9 @@ export const initializeState = () => {
     }
 }
 
-export const newBlog = (content) => {
+export const newBlog = (blogObject) => {
     return async dispatch => {
-        const addedBlog = await blogService.create(content);
+        const addedBlog = await blogService.create(blogObject);
 
         dispatch({
             type: 'NEW BLOG',
@@ -52,7 +52,7 @@ export const likeBlog = (id) => {
         const blogToLike = allBlogs.find(blog => blog.id === id);
         const likedBlog = { ...blogToLike, likes: blogToLike.likes + 1 };
         const updatedBlog = await blogService.update(id, likedBlog);
-        console.log(updatedBlog.id);
+        //console.log(updatedBlog.id);
 
         dispatch({
             type: 'VOTE',
