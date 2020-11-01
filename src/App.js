@@ -44,7 +44,7 @@ const App = () => {
 			dispatch(loggedUser(user));
 			blogService.setToken(user.token);
 		}
-	}, []);
+	}, [dispatch]); //incase of any problem with useEffect here remove the dispatch
 
 
 	// //the event handler for adding a new blog
@@ -150,13 +150,11 @@ const handleRemOf = async (id) => {
 
 			{user === null
 				?
-				<Togglable buttonLabel="log in">
-					<LoginForm handleLogin={handleLogin}
-						username={username}
-						setUsername={setUsername}
-						password={password}
-						setPassword={setPassword} />
-				</Togglable>
+				<LoginForm handleLogin={handleLogin}
+					username={username}
+					setUsername={setUsername}
+					password={password}
+					setPassword={setPassword} />
 				:
 				// <DisplayBlogs blogs={blogs} user={user} handleLogout={handleLogout}>
 
@@ -175,7 +173,7 @@ const handleRemOf = async (id) => {
 				<DisplayBlogs user={user} handleLogout={handleLogout}>
 
 					<Togglable buttonLabel="new blog">
-						<BlogForm  /> {/*createBlog={addBlog} */}
+						<BlogForm /> {/*createBlog={addBlog} */}
 					</Togglable>
 
 				</DisplayBlogs>
