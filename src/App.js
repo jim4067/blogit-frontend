@@ -10,7 +10,7 @@ import { initializeState } from './reducers/blogReducer';
 import { loggedUser } from './reducers/userReducer';
 import blogService from './services/blogs';
 import loginService from './services/login';
-import './App.css';
+import './styles/App.css';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -144,7 +144,7 @@ const handleRemOf = async (id) => {
 	}
 
 	return (
-		<div>
+		<div className='app-container'>
 
 			<Notification />
 
