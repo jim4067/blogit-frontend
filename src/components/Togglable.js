@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import styled from "styled-components";
+
+//styles for the buttons (loggin in, creating a new blog and cancelling)
+const LoginButton = styled.button`
+    color: palevioletred;
+    margin-top: 40vh;
+`;
+
+const LoginDiv = styled.div`
+	text-align: center;
+`;
 
 const Togglable = (props) => {
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(false);
 
     //by default the button is set to display:"" since state is false
     //in short -> show button and hide the  form
@@ -12,22 +23,52 @@ const Togglable = (props) => {
 
     const toggleVisibility = () => {
         setVisible(!visible);
+    };
+
+    const buttonName = props.buttonLabel;
+
+    //Conditional rendering here because of styling. this component wraps around the BlogForm and LoginForm components
+    if (buttonName.includes("log in")) {
+        return (
+            <div>
+                <LoginDiv style={hideWhenVisible}>
+                    {/* put the conditional rendering for how the button should be shown
+                    maybe I should add a banner here to occupy the dead space when only the log in button is shown
+                    */}
+                    <LoginButton onClick={toggleVisibility}>
+                        {" "}
+                        {props.buttonLabel}{" "}
+                    </LoginButton>
+                </LoginDiv>
+                <div style={showWhenVisible}>
+                    {props.children}
+
+                    <button onClick={toggleVisibility}>
+                        {" "}
+						cancel the login button{" "}
+                    </button>
+                </div>
+            </div>
+        );
+    } else if (buttonName.includes("new blog")) {
+        return (
+            <div>
+                <div style={hideWhenVisible}>
+                    {/* put the conditional rendering for how the button should be shown */}
+                    <button onClick={toggleVisibility}>
+                        {" "}
+                        {props.buttonLabel}{" "}
+                    </button>
+                </div>
+                <div style={showWhenVisible}>
+                    {props.children}
+
+                    <button onClick={toggleVisibility}> cancel </button>
+                </div>
+            </div>
+        );
     }
-
-    return (
-        <div>
-            <div style={hideWhenVisible}>
-                <button onClick={toggleVisibility}> {props.buttonLabel} </button>
-            </div>
-            <div style={showWhenVisible}>
-
-                {props.children}
-
-                <button onClick={toggleVisibility}> cancel </button>
-            </div>
-        </div>
-    );
-}
+};
 
 export default Togglable;
 
