@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import BlogForm from './components/BlogForm';
 import DisplayBlogs from './components/DisplayBlogs';
 import LoginForm from './components/LoginForm';
@@ -7,19 +7,21 @@ import Notification from './components/Notification';
 import Togglable from './components/Togglable';
 import { showNotification } from './reducers/notificationReducer'; //action creator for notifications
 import { initializeState } from './reducers/blogReducer';
+import { loggedUser } from './reducers/userReducer';
 import blogService from './services/blogs';
 import loginService from './services/login';
 import './App.css';
 
 const App = () => {
 	const dispatch = useDispatch();
+	const user = useSelector(state => state.user);
 
 	//const [blogs, setBlogs] = useState([]);
 
 	//the states for the login form
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const [user, setUser] = useState("");
+	//const [user, setUser] = useState("");
 
 	//the state for nofitification
 	//const [message, setMessage] = useState(null);// for notifications dispatch the actions for the different actions
@@ -33,11 +35,13 @@ const App = () => {
 		dispatch(initializeState());
 	}, [dispatch]);
 
+	//the useEffect function below ensures that we do not have to log back in every time we refresh the page
+	//it sets the value of the user in the redux user reducer
 	useEffect(() => {
 		const loggedUserJSON = window.localStorage.getItem('loggedBlogAppUser');
 		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON);
-			setUser(user);
+			dispatch(loggedUser(user));
 			blogService.setToken(user.token);
 		}
 	}, []);
@@ -117,7 +121,8 @@ const handleRemOf = async (id) => {
 
 			setUsername("");
 			setPassword("");
-			setUser(user);
+			//setUser(user);
+			dispatch(loggedUser(user));
 
 		} catch (exception) {
 			/*setMessage("wrong username or password");
@@ -147,7 +152,7 @@ const handleRemOf = async (id) => {
 
 			<Notification />
 
-			{user === ""
+			{user === null
 				?
 				<Togglable buttonLabel="log in">
 					<LoginForm handleLogin={handleLogin}
@@ -171,7 +176,7 @@ const handleRemOf = async (id) => {
 				// 		/>
 				// 	) }
 				// </DisplayBlogs>
-				<DisplayBlogs>
+				<DisplayBlogs user={user} handleLogout={handleLogout}>
 
 					<Togglable buttonLabel="new blog">
 						<BlogForm />
