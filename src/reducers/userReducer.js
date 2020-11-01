@@ -2,7 +2,7 @@
 
 //Store the information about the signed in user in the Redux store.
 
-const userReducer = (state = "", action) => {
+const userReducer = (state = null, action) => {
     switch (action.type) {
         case 'INIT USER':
             return action.data;
