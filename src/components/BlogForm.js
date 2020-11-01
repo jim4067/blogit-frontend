@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import '../styles/BlogForm.css';
 
+//the action creator for the reducer
 import { newBlog } from '../reducers/blogReducer';
 import { showNotification } from '../reducers/notificationReducer';
 

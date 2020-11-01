@@ -34,8 +34,10 @@ const LoginCancel = styled.button`
 	border-radius: 6px;
 	box-shadow: 0 5px 15px -5px #00000070;
 	color: #3498db;
-	font-size: large;
-	text-align: center;
+    font-size: large;
+    height: 40px;
+    text-align: center;
+    transform: translate(60vh, 60%);
 	transition: 0.2s linear;
 	width: 200px;
 
@@ -43,7 +45,8 @@ const LoginCancel = styled.button`
 		color: white;
 		background-color: red;
 		cursor: pointer;
-		transform: scale(1.1);
+        transform: scale(1.1);
+        transform: translate(60vh, 60%);
 	}
 `;
 
