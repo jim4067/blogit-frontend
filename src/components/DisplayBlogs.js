@@ -9,6 +9,13 @@ const DisplayBlogs = (props) => {
     const blogs = useSelector(state => state.blogs);
     const dispatch = useDispatch();
 
+    const handleRemOf = (blog) => {
+
+        if (window.confirm(`remove blog ${blog.title} by ${blog.author}`)) { //if true then dispatch the action for removing a blog
+            dispatch(removeBlog(blog.id))
+        }
+    }
+
     return (
         <div>
             <h2>Blogs</h2>
@@ -24,7 +31,7 @@ const DisplayBlogs = (props) => {
                         key={blog.id}
                         blog={blog}
                         increaseLikesOf={() => dispatch(likeBlog(blog.id))}
-                        handleRemOf={() => dispatch(removeBlog(blog.id))}
+                        handleRemOf={() => handleRemOf(blog)}
                     />
                 )
             }
