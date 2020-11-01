@@ -24,8 +24,8 @@ form input[type="password"] {
 	background-color: #191919;
 	border: 3px solid #3498db;
 	border-radius: 10px;
-    color: white;
-    font-size: 15px;
+	color: white;
+	font-size: 15px;
 	margin: 20px auto;
 	outline: none;
 	padding: 14px 10px;
@@ -37,8 +37,8 @@ form input[type="password"] {
 form button {
 	background-color: #191919;
 	border: 3px solid #3498db;
-    border-radius: 10px;
-    font-size: 15px;
+	border-radius: 10px;
+	font-size: 15px;
 	margin: 20px auto;
 	outline: none;
 	padding: 12px 10px;
@@ -54,8 +54,26 @@ form input[type="password"]:focus {
 }
 
 form button:hover {
-    background-color: #3498db;
-    color: white;
+	background-color: #3498db;
+	color: white;
 	cursor: pointer;
-    transform: scale(1);
+	transform: scale(1);
+}
+
+@media screen and (max-width: 980px) {
+	form {
+		height: auto;
+		width: auto;
+		margin: auto;
+	}
+	form input[type="text"],
+	form input[type="password"] {
+        margin: 10px auto;
+        padding: 6px 5px;
+    }
+    form button {
+        padding: 6px 5px;
+        min-width: 40px;
+        /* width: auto; */
+    }
 }
