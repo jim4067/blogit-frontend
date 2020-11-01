@@ -47,28 +47,24 @@ const App = () => {
 	}, []);
 
 
-	/*uncomment this piece. It is vital for the addition of a blog
-	//the event handler for adding a new blog
-	const addBlog = async (blogObject) => {
+	// //the event handler for adding a new blog
+	// const addBlog = async (blogObject) => {
 
-		try {
+	// 	try {
 
-			const response = await blogService.create(blogObject);
-			console.log("the response is ....", response);
+	// 		const response = await blogService.create(blogObject);
+	// 		console.log("the response is ....", response);
 
-			//the new way for notifications from the redux store
-			dispatch(showNotification(`a new blog -> ${blogObject.title} by ${blogObject.author} added`, 5))
+	// 		//the new way for notifications from the redux store
+	// 		dispatch(showNotification(`a new blog -> ${blogObject.title} by ${blogObject.author} added`, 5))
 
-			//concatenate the created blog with the array of the blogs
-			//setBlogs(blogs.concat(response.data));
+	// 		//concatenate the created blog with the array of the blogs
+	// 		//setBlogs(blogs.concat(response.data));
 
-			console.log("after adding anew blog all blogs are....", blogs)
-
-		} catch (exception) {
-			console.log("the eception for creating a new blog", exception);
-		}
-	}
-	*/
+	// 	} catch (exception) {
+	// 		console.log("the eception for creating a new blog", exception);
+	// 	}
+	// }
 
 
 	/*uncomment this if everything breaks
@@ -121,7 +117,7 @@ const handleRemOf = async (id) => {
 
 			setUsername("");
 			setPassword("");
-			//setUser(user);
+
 			dispatch(loggedUser(user));
 
 		} catch (exception) {
@@ -179,7 +175,7 @@ const handleRemOf = async (id) => {
 				<DisplayBlogs user={user} handleLogout={handleLogout}>
 
 					<Togglable buttonLabel="new blog">
-						<BlogForm />
+						<BlogForm  /> {/*createBlog={addBlog} */}
 					</Togglable>
 
 				</DisplayBlogs>
