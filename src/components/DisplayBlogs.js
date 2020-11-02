@@ -9,6 +9,7 @@ const DisplayBlogs = (props) => {
     const blogs = useSelector(state => state.blogs);
     const dispatch = useDispatch();
 
+    //event handler to remove a blog
     const handleRemOf = (blog) => {
 
         if (window.confirm(`remove blog ${blog.title} by ${blog.author}`)) { //if true then dispatch the action for removing a blog
@@ -18,12 +19,7 @@ const DisplayBlogs = (props) => {
 
     return (
         <div>
-            <h2>Blogs</h2>
-
-            <p>
-                {`logged in as ${props.user.name}`}
-                <button onClick={props.handleLogout}>logout</button>
-            </p>
+            <h2 style={{ textAlign: "center" }} >Blogs</h2>
 
             {
                 blogs.map((blog) =>
