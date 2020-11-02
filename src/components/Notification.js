@@ -34,10 +34,16 @@ const Notification = () => {
         )
     } else if (notification.includes("a new blog")) {
         return (
-            <div className='error' style={blog_addition_styles}>
+            <div style={blog_addition_styles}>
                 {notification}
             </div>
         )
+    } else if (notification.includes("could not connect to the server")) {
+        return (
+            <div className='error' style={wrong_login_styles} >
+                {notification}
+            </div>
+        );
     }
 }
 

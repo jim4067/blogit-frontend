@@ -55,12 +55,14 @@ const App = () => {
 			dispatch(loggedUser(user));
 
 		} catch (exception) {
-			console.log("the exception when logging in ...", exception.message);
+			console.log("the exception when logging in ...", exception.name, exception.message);
 
+			//before dispatching a notification make sure to add in the Notification component
 			if (exception.message.includes("Request failed with status code 401")) {
 				dispatch(showNotification("wrong username or password", 5));
-			} else {
-				dispatch(showNotification("Error connecting to the network"))
+			}
+			if (exception.message.includes("Request failed with status code 500")) {
+				dispatch(showNotification("could not connect to the server", 8));
 			}
 		}
 	}
