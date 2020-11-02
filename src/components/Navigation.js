@@ -10,6 +10,13 @@ const Wrapper = styled.nav`
 	justify-content: space-between;
 	padding: 2vh 0px;
     top: 0;
+
+    @media (max-width: 980px){
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
 `;
 const NavBar1 = styled.section`
 	display: flex;
@@ -17,7 +24,11 @@ const NavBar1 = styled.section`
     padding: 5px 20px;
 `;
 const NavBar2 = styled.section`
-	//nothing yet
+
+	@media  (max-width: 980px){
+        padding: 15px 0px;
+       text-align: center;
+    }
 `;
 const StyledLink = styled(Link)`
 	text-decoration: none;
@@ -48,7 +59,11 @@ const LogOutButton = styled.button`
 		color: #f1f1f1;
         cursor: pointer;
         transform: scale(1.1);
-	}
+    }
+
+    @media (max-width: 670px){
+        margin-top: 20px;
+    }
 `;
 
 const Navigation = ({ user, handleLogout }) => {
