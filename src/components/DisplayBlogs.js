@@ -2,6 +2,11 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Blog from './Blog';
 import { likeBlog, removeBlog } from '../reducers/blogReducer';
+import styled from 'styled-components';
+
+const StyledHeading = styled.h2`
+text-align: center;
+`
 
 //component to display blogs if user logges in
 //Putting the action creators for removing and liking a blog here since it is higher than the Blog component
@@ -18,8 +23,8 @@ const DisplayBlogs = (props) => {
     }
 
     return (
-        <div>
-            <h2 style={{ textAlign: "center" }} >Blogs</h2>
+        <div className='DisplayBlogs-container' >
+            <StyledHeading className='blog-title'>Blogs</StyledHeading>
 
             {
                 blogs.map((blog) =>
