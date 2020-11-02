@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BlogForm from './components/BlogForm';
 import DisplayBlogs from './components/DisplayBlogs';
+import DisplayUsers from './components/DisplayUsers';
 import LoginForm from './components/LoginForm';
 import Notification from './components/Notification';
 import Togglable from './components/Togglable';
 import { showNotification } from './reducers/notificationReducer'; //action creator for notifications
 import { initializeState } from './reducers/blogReducer';
 import { loggedUser } from './reducers/userReducer';
+import { allUsers } from './reducers/usersReducer';
 import blogService from './services/blogs';
 import loginService from './services/login';
 import './styles/App.css';
@@ -20,9 +22,16 @@ const App = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
+	//initializing the state for the blogs
 	useEffect(() => {
 		dispatch(initializeState());
 	}, [dispatch]);
+
+	//getting all users
+	useEffect(() => {
+        dispatch(allUsers());
+    }, []);
+
 
 	//the useEffect function below ensures that we do not have to log back in every time we refresh the page
 	//it sets the value of the user in the redux user reducer
@@ -57,7 +66,7 @@ const App = () => {
 		} catch (exception) {
 			console.log("the exception when logging in ...", exception.name, exception.message);
 
-			//before dispatching a notification make sure to add in the Notification component
+			//before dispatching a notification make sure to add it in the Notification component
 			if (exception.message.includes("Request failed with status code 401")) {
 				dispatch(showNotification("wrong username or password", 5));
 			}
@@ -83,6 +92,7 @@ const App = () => {
 
 			<Notification />
 
+			{/* it time to get rid of conditional rendering and use react router */}
 			{user === null
 				?
 				<LoginForm handleLogin={handleLogin}
@@ -96,6 +106,8 @@ const App = () => {
 					<Togglable buttonLabel="new blog">
 						<BlogForm />
 					</Togglable>
+
+					<DisplayUsers />
 
 				</DisplayBlogs>
 			}
