@@ -15,7 +15,7 @@ export const allUsers = () => {
     return async dispatch => {
         const users = await userService.getUsers();
 
-        const unique_users = users.name; /*[... new Set(users.name)];*/
+        const unique_users = users; /*[... new Set(users.name)];*/
 
         dispatch({
             type: 'ALL USERS',
