@@ -7,7 +7,7 @@
 	transform: translate(-50%, -50%);
 }
 
-form {
+.login-form {
 	background-color: #191919;
 	height: 350px;
 	padding: 40px;
@@ -15,12 +15,12 @@ form {
 	width: 300px;
 }
 
-form h2 {
+.login-form h2 {
 	color: white;
 }
 
-form input[type="text"],
-form input[type="password"] {
+.login-form input[type="text"],
+.login-form input[type="password"] {
 	background-color: #191919;
 	border: 3px solid #3498db;
 	border-radius: 10px;
@@ -34,7 +34,7 @@ form input[type="password"] {
 	width: 200px;
 }
 
-form button {
+.login-form button {
 	background-color: #191919;
 	border: 3px solid #3498db;
 	border-radius: 10px;
@@ -47,13 +47,13 @@ form button {
 	width: 140px;
 }
 
-form input[type="text"]:focus,
-form input[type="password"]:focus {
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
 	border-color: #2ecc72;
 	width: 280px;
 }
 
-form button:hover {
+.login-form button:hover {
 	background-color: #3498db;
 	color: white;
 	cursor: pointer;
@@ -61,19 +61,19 @@ form button:hover {
 }
 
 @media screen and (max-width: 980px) {
-	form {
+	.login-form {
 		height: auto;
 		width: auto;
 		margin: auto;
 	}
-	form input[type="text"],
-	form input[type="password"] {
-        margin: 10px auto;
-        padding: 6px 5px;
-    }
-    form button {
-        padding: 6px 5px;
-        min-width: 40px;
-        /* width: auto; */
-    }
+	.login-form input[type="text"],
+	.login-form input[type="password"] {
+		margin: 10px auto;
+		padding: 6px 5px;
+	}
+	.login-form button {
+		padding: 6px 5px;
+		min-width: 40px;
+		/* width: auto; */
+	}
 }
