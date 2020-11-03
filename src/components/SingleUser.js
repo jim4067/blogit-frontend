@@ -8,7 +8,10 @@ const StyledHeading = styled.h2`
 text-align: center;
 padding: 10px 16px;
 `
-
+const StyledList = styled.li`
+list-style-type: none;
+padding: 10px 0px;
+`
 //to list all the blogs that a user has made
 
 
@@ -26,11 +29,14 @@ const User = () => {
     }
     return (
         <div>
-            <StyledHeading>{singleUser.name}</StyledHeading> <span>created the following</span>
+            <StyledHeading>{singleUser.name}</StyledHeading>
 
             {
                 singleUser.blogs.map((blog) =>
-                    <li key={blog.id}> {blog.title}</li>
+                    <ul key={blog.id} style={{ textAlign: 'center' }}>
+                        <StyledList > {blog.title}  </StyledList>
+                        <hr />
+                    </ul>
                 )
             }
             {
