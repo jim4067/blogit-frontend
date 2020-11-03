@@ -7,7 +7,7 @@ const LoginForm = ({ handleLogin, username, setUsername, password, setPassword }
 
 	return (
 		<div className="form-container" >
-			<form  onSubmit={handleLogin}>
+			<form className='login-form' onSubmit={handleLogin}>
 			<h2>LOGIN</h2>
 			<div>
 				<input placeholder="Username" id="username" type='text' name='username' value={username} onChange={({ target }) => setUsername(target.value)} />
