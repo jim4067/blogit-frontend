@@ -39,9 +39,6 @@ const User = () => {
                     </ul>
                 )
             }
-            {
-                console.log("the single users name", singleUser.name)
-            }
         </div>
     );
 }
