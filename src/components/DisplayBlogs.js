@@ -4,9 +4,13 @@ import Blog from './Blog';
 import { likeBlog, removeBlog } from '../reducers/blogReducer';
 import styled from 'styled-components';
 
-const StyledHeading = styled.h2`
-text-align: center;
+const Wrapper = styled.div `
+// color: white;
 `
+const StyledHeading = styled.h2`
+	margin: 20px 0px;
+	text-align: center;
+`;
 
 //component to display blogs if user logges in
 //Putting the action creators for removing and liking a blog here since it is higher than the Blog component
@@ -23,7 +27,7 @@ const DisplayBlogs = (props) => {
     }
 
     return (
-        <div className='DisplayBlogs-container' >
+        <Wrapper >
             <StyledHeading className='blog-title'>Blogs</StyledHeading>
 
             {
@@ -39,7 +43,7 @@ const DisplayBlogs = (props) => {
 
             {props.children}
 
-        </div>
+        </Wrapper>
     );
 }
 
