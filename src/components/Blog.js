@@ -1,4 +1,18 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const StyledNameLink = styled(Link)`
+    color: black;
+	text-decoration: none;
+	transition: 0.2s linear;
+
+	:hover {
+        cursor: pointer;
+        color: palevioletred;
+	}
+`;
+
 
 const Blog = ({ blog, increaseLikesOf, handleRemOf }) => {
 	const [visible, setVisible] = useState(true);
@@ -17,7 +31,7 @@ const Blog = ({ blog, increaseLikesOf, handleRemOf }) => {
 
 	return (
 		<div style={mainStyles} >
-			{blog.title} {blog.author}
+			<StyledNameLink to={`/blogs/${blog.id}`} >{blog.title} {blog.author}</StyledNameLink>
 			<button onClick={toggleVisibility} className="viewButton" > {visible ? "view" : "hide"} </button>
 
 			<div style={hideByDefault} className='hidden-div' >
