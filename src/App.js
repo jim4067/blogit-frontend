@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import BlogForm from './components/BlogForm';
 import DisplayBlogs from './components/DisplayBlogs';
 import DisplayUsers from './components/DisplayUsers';
