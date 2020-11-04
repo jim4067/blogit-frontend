@@ -3,13 +3,44 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledNameLink = styled(Link)`
-    color: black;
+	color: black;
 	text-decoration: none;
 	transition: 0.2s linear;
 
 	:hover {
-        cursor: pointer;
-        color: palevioletred;
+		cursor: pointer;
+		color: palevioletred;
+	}
+`;
+
+const StyledButton = styled.button`
+	background-color: inherit;	
+	border: 1px solid palevioletred;
+	color: papayawhip;
+	height: 20px;
+	margin: 0px 30px;
+	outline: none;	
+	text-align: center;
+	transition: 0.2s linear;
+	width: 60px;
+
+	:hover {
+		color: palevioletred;
+		cursor: pointer;
+		transform: scale(1.1);
+	}
+`;
+
+const StyledRemove = styled(StyledButton)`
+	background-color: inherit;
+	border: 1px solid red;
+	box-shadow: 0 5px 15px -5px #00000070;
+	color: papayawhip;
+	height: 23px;
+	margin: 0px;
+
+	:hover {
+		background-color: red;
 	}
 `;
 
@@ -32,17 +63,17 @@ const Blog = ({ blog, increaseLikesOf, handleRemOf }) => {
 	return (
 		<div style={mainStyles} >
 			<StyledNameLink to={`/blogs/${blog.id}`} >{blog.title} {blog.author}</StyledNameLink>
-			<button onClick={toggleVisibility} className="viewButton" > {visible ? "view" : "hide"} </button>
+			<StyledButton onClick={toggleVisibility} className="viewButton" > {visible ? "view" : "hide"} </StyledButton>
 
 			<div style={hideByDefault} className='hidden-div' >
 				{blog.url}
 				<br />
          likes: {blog.likes}
-				<button onClick={increaseLikesOf} > like </button> {/*should you declare the brackets here or leave it*/}
+				<StyledButton onClick={increaseLikesOf} > like </StyledButton> {/*should you declare the brackets here or leave it*/}
 				<br />
 				{blog.author}
 				<br />
-				<button onClick={handleRemOf}> remove </button>
+				<StyledRemove onClick={handleRemOf}> remove </StyledRemove>
 			</div>
 
 		</div>
