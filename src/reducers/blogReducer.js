@@ -11,6 +11,10 @@ const blogReducer = (state = [], action) => {
             return sortBlogs(action.data);
         case 'NEW BLOG':
             return [...state, action.data];
+        case 'COMMENT': { //forgetting these curly braces will always be the reason for the eslint warnings
+            const commented = action.data
+            return state.map((blog) => blog.id === commented.id ? commented : blog); //if the commented blog exists return it else return state unchanged
+        }
         case 'VOTE': {
             const likedBlog = action.updatedBlog;
             const blogsToSort = state.map(blog => blog.id === likedBlog.id ? likedBlog : blog);
@@ -46,6 +50,17 @@ export const newBlog = (blogObject) => {
     }
 }
 
+export const makeComment = (id, comment) => {
+    return async dispatch => {
+        const commented = await blogService.comment(id, comment);
+
+        dispatch({
+            type: 'COMMENT',
+            data: commented
+        });
+    }
+}
+
 export const likeBlog = (id) => {
     return async dispatch => {
         const allBlogs = await blogService.getAll();
@@ -57,7 +72,7 @@ export const likeBlog = (id) => {
         dispatch({
             type: 'VOTE',
             updatedBlog
-        })
+        });
     }
 }
 
@@ -70,7 +85,7 @@ export const removeBlog = (id) => {
         dispatch({
             type: 'REMOVE',
             data: afterDeletion
-        })
+        });
     }
 }
 
