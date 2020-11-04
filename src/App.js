@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import BlogForm from './components/BlogForm';
 import DisplayBlogs from './components/DisplayBlogs';
 import DisplayUsers from './components/DisplayUsers';
 import LoginForm from './components/LoginForm';
+import Navigation from './components/Navigation';
 import Notification from './components/Notification';
-import Togglable from './components/Togglable';
+import SingleBlog from './components/SingleBlog';
+import SingleUser from './components/SingleUser';
 import { showNotification } from './reducers/notificationReducer'; //action creator for notifications
 import { initializeState } from './reducers/blogReducer';
 import { loggedUser } from './reducers/userReducer';
@@ -29,8 +32,8 @@ const App = () => {
 
 	//getting all users
 	useEffect(() => {
-        dispatch(allUsers());
-    }, []);
+		dispatch(allUsers());
+	}, []);
 
 
 	//the useEffect function below ensures that we do not have to log back in every time we refresh the page
@@ -92,6 +95,15 @@ const App = () => {
 
 			<Notification />
 
+			{/* the navigation for the app. Must make sure that the user is not null. Something that react really hates */}
+			{
+				user !== null
+					?
+					<Navigation user={user} handleLogout={handleLogout} />
+					:
+					null
+			}
+
 			{/* it time to get rid of conditional rendering and use react router */}
 			{user === null
 				?
@@ -101,15 +113,26 @@ const App = () => {
 					password={password}
 					setPassword={setPassword} />
 				:
-				<DisplayBlogs user={user} handleLogout={handleLogout}>
-
-					<Togglable buttonLabel="new blog">
-						<BlogForm />
-					</Togglable>
-
-					<DisplayUsers />
-
-				</DisplayBlogs>
+				// easter egg saying -> so your are developer too.
+				<Switch>
+					<Route path='/users/:id'>
+						<SingleUser />
+					</Route>
+					<Route path='/users'>
+						<DisplayUsers />
+					</Route>
+					<Route path='/blogs/:id'>
+						<SingleBlog />
+					</Route>
+					<Route path='/'>
+						<DisplayBlogs >
+							{/* <Togglable buttonLabel={'new blog'}>
+								<BlogForm />
+							</Togglable> */}
+							<BlogForm />
+						</DisplayBlogs>
+					</Route>
+				</Switch>
 			}
 
 		</div>
@@ -117,4 +140,3 @@ const App = () => {
 }
 
 export default App;
-
