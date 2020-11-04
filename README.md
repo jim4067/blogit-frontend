@@ -1,5 +1,7 @@
 # BLOGIT
 
+![logo-test](public/readme-banner.png)
+
 Hi there and welcome!
 
 This is the front end part of the Blogit web application. Blogit is a web app that allows a user to save applications that He/She came across the internet. No need to have thousands of bookmarks or tabs of blogs that you intend to read in Chrome, Let blogit do that for you. Sign in and let blogit save that blog that your are most certainly never going to read.
@@ -19,5 +21,9 @@ cd blogit
 npm install
 npm run dev
 ```
+Or go directly to the live link [jims-blogit]
 
 Thank you. Leave a star if you like what you see, also if you are a recruiter here because of a job I applied to, feel free to ask questions.
+
+[fullstackopen]: https://fullstackopen.com
+[jims-blogit]: http://jims-blogit.herokuapp.com/
