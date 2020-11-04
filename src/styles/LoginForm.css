@@ -12,7 +12,7 @@
 	height: 350px;
 	padding: 40px;
 	text-align: center;
-	width: 300px;
+	width: auto;
 }
 
 .login-form h2 {
@@ -22,7 +22,7 @@
 .login-form input[type="text"],
 .login-form input[type="password"] {
 	background-color: #191919;
-	border: 3px solid #3498db;
+	border: 2px solid #3498db;
 	border-radius: 10px;
 	color: white;
 	font-size: 15px;
@@ -36,7 +36,7 @@
 
 .login-form button {
 	background-color: #191919;
-	border: 3px solid #3498db;
+	border: 2px solid #3498db;
 	border-radius: 10px;
 	font-size: 15px;
 	margin: 20px auto;
@@ -50,7 +50,7 @@
 .login-form input[type="text"]:focus,
 .login-form input[type="password"]:focus {
 	border-color: #2ecc72;
-	width: 280px;
+	width: 220px;
 }
 
 .login-form button:hover {
