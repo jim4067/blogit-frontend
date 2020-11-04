@@ -54,8 +54,6 @@ const SingleBlog = () => {
         ? blogs.find((blog) => blog.id === match.params.id)
         : null;
 
-    console.log('here is what the single blog contains...', singleBlog);
-
     //event handler for liking a blog
     const increaseLikeOf = (id) => {
         dispatch(likeBlog(id));

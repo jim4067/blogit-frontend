@@ -50,7 +50,6 @@ const App = () => {
 	//the event hanlder for logging in
 	const handleLogin = async (event) => {
 		event.preventDefault();
-		console.log("logging in with", username, password);
 
 		try {
 			const user = await loginService.login(
@@ -67,8 +66,6 @@ const App = () => {
 			dispatch(loggedUser(user));
 
 		} catch (exception) {
-			console.log("the exception when logging in ...", exception.name, exception.message);
-
 			//before dispatching a notification make sure to add it in the Notification component
 			if (exception.message.includes("Request failed with status code 401")) {
 				dispatch(showNotification("wrong username or password", 5));
@@ -86,7 +83,7 @@ const App = () => {
 			window.localStorage.clear();
 			window.location.reload();
 		} catch (exception) {
-			console.log("the logout exception is...", exception);
+			console.log("How hard is it pressing a big red button", exception);
 		}
 	}
 
@@ -126,7 +123,7 @@ const App = () => {
 					</Route>
 					<Route path='/'>
 						<DisplayBlogs >
-							{/* <Togglable buttonLabel={'new blog'}>
+							{/* <Togglable buttonLabel={'new blog'}> commented because styling this is a nightmare
 								<BlogForm />
 							</Togglable> */}
 							<BlogForm />
