@@ -16,8 +16,7 @@ const StyledNameLink = styled(Link)`
 const StyledButton = styled.button`
 	background-color: inherit;	
 	border: 1px solid palevioletred;
-	color: papayawhip;
-	height: 20px;
+	color: palevioletred;
 	margin: 0px 30px;
 	outline: none;	
 	text-align: center;
@@ -25,7 +24,7 @@ const StyledButton = styled.button`
 	width: 60px;
 
 	:hover {
-		color: palevioletred;
+		color: papayawhip;
 		cursor: pointer;
 		transform: scale(1.1);
 	}
@@ -35,12 +34,13 @@ const StyledRemove = styled(StyledButton)`
 	background-color: inherit;
 	border: 1px solid red;
 	box-shadow: 0 5px 15px -5px #00000070;
-	color: papayawhip;
-	height: 23px;
-	margin: 0px;
+	color: black;
+	//height: 23px;
+	margin: 10px 0px 5px 0px;
 
 	:hover {
 		background-color: red;
+		color:  papayawhip;
 	}
 `;
 
