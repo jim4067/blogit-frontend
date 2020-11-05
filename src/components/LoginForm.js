@@ -1,12 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
 import '../styles/LoginForm.css';
 
 //component to display login
 const LoginForm = ({ handleLogin, username, setUsername, password, setPassword }) => {
-	const history = useHistory();
-	history.push('/');
 
 	return (
 		<div className="form-container" >
