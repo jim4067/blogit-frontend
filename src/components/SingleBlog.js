@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import { likeBlog } from '../reducers/blogReducer';
+import DisplayComments from './DisplayComments';
 
 const Wrapper = styled.div`
 	border: 0.3px solid;
@@ -65,12 +66,15 @@ const SingleBlog = () => {
     }
 
     return (
-        <Wrapper>
-            <StyledHeading>{singleBlog.title}</StyledHeading>
-            <StyledLink title={`visit blog ${singleBlog.title}`} href={`${singleBlog.url}`}> {singleBlog.url}</StyledLink>
-            <StyledParagraph>likes {singleBlog.likes} <StyledButton onClick={() => increaseLikeOf(singleBlog.id)} > like </StyledButton> </StyledParagraph>
-            <StyledParagraph>added by {singleBlog.user ? singleBlog.user.name : 'N/A'}</StyledParagraph>
-        </Wrapper>
+        <div>
+            <Wrapper>
+                <StyledHeading>{singleBlog.title}</StyledHeading>
+                <StyledLink title={`visit blog ${singleBlog.title}`} href={`${singleBlog.url}`}> {singleBlog.url}</StyledLink>
+                <StyledParagraph>likes {singleBlog.likes} <StyledButton onClick={() => increaseLikeOf(singleBlog.id)} > like </StyledButton> </StyledParagraph>
+                <StyledParagraph>added by {singleBlog.user ? singleBlog.user.name : 'N/A'}</StyledParagraph>
+            </Wrapper>
+            <DisplayComments />
+        </div>
     );
 
 }
